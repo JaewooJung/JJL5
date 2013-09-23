@@ -96,24 +96,32 @@
 
 <div class="row-fluid">
     <div class="block span6">
-        <a href="#tablewidget" class="block-heading" data-toggle="collapse"><h2><%=project_detail.getTitle() %></h2></a>
-        <div id="tablewidget" class="block-body collapse in">
-            <h2>프로젝트 번호 </h2>
-            <%= project_detail.getPno() %>
+        <a href="#tablewidget" class="block-heading" ><h2><%=project_detail.getTitle() %></h2></a>
+        
+            <table class="table list">
+            <tr>
+            <th>프로젝트 번호 </th>
+            <td><%= project_detail.getPno() %></td>
+            </tr>
+            <tr>
+            <th>프로젝트 시작일  </th>
+            <td><%= project_detail.getStartDate() %></td>
+            </tr>
+            <tr>
+            <th>프로젝트 종료일 </th>
+            <td><%= project_detail.getEndDate() %></td>
+            </tr>
+            <tr>
+            <th>프로젝트 상세정보  </th>
+            <td><%= project_detail.getContent() %></td>
+            </tr>
+            <tr>
+            <th>TAG </th>
+            <td><%= project_detail.getTag() %></td>
+            </tr>
+            </table>
             
-            <h2>프로젝트 시작일  </h2>
-            <%= project_detail.getStartDate() %><br>
-            
-            <h2>프로젝트 종료일 </h2>
-            <%= project_detail.getEndDate() %><br>
-            
-            <h2>프로젝트 상세정보  </h2>
-            <%= project_detail.getContent() %><br>
-            
-            <h2>TAG </h2>
-            <%= project_detail.getTag() %><br>
-            
-            <br><br><h2> 멤버 목록</h2>
+            <a href="#tablewidget" class="block-heading" ><h2>멤버 목록</h2></a>
             
             <table class="table list">
 					<tr>
@@ -147,7 +155,8 @@
 			</c:forEach>
 			</table>
                         
-        </div>
+        
+
     
     
     
@@ -159,28 +168,12 @@
 
 
                     
-                    <footer>
-                        <hr>
-
-                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-
-                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-                    </footer>
-                    
-            </div>
-        </div>
+                   
     
     
 
 
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
-        $("[rel=tooltip]").tooltip();
-        $(function() {
-            $('.demo-cancel-click').click(function(){return false;});
-        });
-    </script>
+   
     
   </body>
 </html>

@@ -7,9 +7,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.bitacademy.java41.annotations.Component;
 import net.bitacademy.java41.util.DBConnectionPool;
 import net.bitacademy.java41.vo.Member;
-
+import net.bitacademy.java41.vo.Photo;
+@Component
 public class MemberDao {
 	DBConnectionPool conPool;
 	
@@ -32,8 +34,7 @@ public class MemberDao {
 		try {
 			con = conPool.getConnection();
 			stmt = con.prepareStatement(
-				"select * from SPMS_MEMBS "
-				+ " where EMAIL=? and PWD=?"); // ? -> in-parameter
+				"SELECT * FROM test.SPMS_MEMBS t1 left join test.SPMS_MEMIMG t2 on t1.EMAIL= t2.EMAIL where t1.EMAIL=? and t1.PWD=?"); // ? -> in-parameter
 			stmt.setString(1, email);
 			stmt.setString(2, password);
 			rs = stmt.executeQuery();
@@ -50,6 +51,9 @@ public class MemberDao {
 				m.setDetailAddress(rs.getString("DET_ADDR"));
 				m.setTag(rs.getString("TAG"));
 				m.setLevel(rs.getInt("LEVEL"));
+				if(rs.getString("IMGURL") != null){
+				m.setPhotos(new String[]{rs.getString("IMGURL")});	
+				}
 				return m;
 				
 			} else {
@@ -308,7 +312,66 @@ public class MemberDao {
 			}
 		}
 	}
+	
+	
+	public void addPhoto(String email, String path) throws Exception {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			con = conPool.getConnection();
+			stmt = con.prepareStatement(
+				"insert into SPMS_MEMIMG(EMAIL,IMGURL)"
+				+ " values(?,?)");
+			stmt.setString(1, email);
+			stmt.setString(2, path);
+			stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			throw e;
+			
+		} finally {
+			try {stmt.close();} catch(Exception e) {}
+			if (con != null && con.getAutoCommit()) {
+				conPool.returnConnection(con);
+			}
+		}
+	}
+	
+	public List<Photo> listPhoto(String email) throws Exception {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = conPool.getConnection();
+			stmt = con.prepareStatement(
+				"select INO,IMGURL from SPMS_MEMIMG"
+				+ " where EMAIL=?"); 
+			stmt.setString(1, email);
+			rs = stmt.executeQuery();
+			
+			ArrayList<Photo> list = new ArrayList<Photo>();
+			while (rs.next()) {
+				list.add(new Photo()
+						.setNo(rs.getInt("INO"))
+						.setEmail(email)
+						.setFilename(rs.getString("IMGURL")));
+			}
+			
+			return list;
+		} catch (Exception e) {
+			throw e;
+			
+		} finally {
+			try {rs.close();} catch (Exception e) {}
+			try {stmt.close();} catch (Exception e) {}
+			if (con != null) {
+				conPool.returnConnection(con);
+			}
+		}	
 
+	}
 }
 
 

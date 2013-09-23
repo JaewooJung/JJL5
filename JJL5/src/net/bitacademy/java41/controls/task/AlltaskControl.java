@@ -6,12 +6,13 @@ import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
+import net.bitacademy.java41.annotations.Component;
 import net.bitacademy.java41.controls.PageControl;
 import net.bitacademy.java41.dao.TaskDao;
 import net.bitacademy.java41.services.TaskService;
 import net.bitacademy.java41.vo.Project;
 import net.bitacademy.java41.vo.Task;
-
+@Component("/task/alltask.do")
 public class AlltaskControl implements PageControl{
 	TaskService taskService;
 	

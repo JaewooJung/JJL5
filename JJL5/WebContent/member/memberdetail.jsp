@@ -101,25 +101,45 @@
 <div class="row-fluid">
     <div class="block span6">
         <a href="#tablewidget" class="block-heading" data-toggle="collapse"><h2><%=memberdetail.getName() %></h2></a>
-        <div id="tablewidget" class="block-body collapse in">
-            <h2>이메일  </h2>
-            <%= memberdetail.getEmail()%>
-            <h2>전화번호  </h2>
-            <%= memberdetail.getTel()%>
-            <h2>블로그  </h2>
-            <%= memberdetail.getBlog()%>
-            <h2>등록일  </h2>
-            <%= memberdetail.getRegDate()%>
-            <h2>수정일  </h2>
-            <%= memberdetail.getUpdateDate()%>
-            <h2>주소번호  </h2>
-            <%= memberdetail.getAddressNo()%>
-            <h2>상세주소  </h2>
-            <%= memberdetail.getDetailAddress()%>
-            <h2>Tag  </h2>
-            <%= memberdetail.getTag()%>
-            <h2>Level  </h2>
-            <% if(memberdetail.getLevel() == 0){
+        
+            
+            <table class="table list">
+			
+            <tr>
+            <th>이메일  </th>
+            <td><%= memberdetail.getEmail()%></td>
+            </tr>
+            <tr>
+            <th>전화번호  </th>
+            <td><%= memberdetail.getTel()%></td>
+            </tr>
+            <tr>
+            <th>블로그  </th>
+            <td><%= memberdetail.getBlog()%></td>
+            </tr>
+            <tr>
+            <th>등록일  </th>
+            <td><%= memberdetail.getRegDate()%></td>
+            </tr>
+            <tr>
+            <th>수정일  </th>
+            <td><%= memberdetail.getUpdateDate()%></td>
+            </tr>
+            <tr>
+            <th>주소번호  </th>
+            <td><%= memberdetail.getAddressNo()%></td>
+            </tr>
+            <tr>
+            <th>상세주소  </th>
+            <td><%= memberdetail.getDetailAddress()%></td>
+            </tr>
+            <tr>
+            <th>Tag  </th>
+            <td><%= memberdetail.getTag()%></td>
+            </tr>
+            <tr>
+            <th>Level  </th>
+            <td><% if(memberdetail.getLevel() == 0){
             out.println("일반회원");
             }else if(memberdetail.getLevel() == 1){
             	out.println("관리자");
@@ -131,7 +151,8 @@
             	out.println("너님 누구?");
             }
             
-            %>
+            %></td>
+            </tr>
             
             
                         
@@ -152,34 +173,7 @@
     </ul>
 </div>
  -->
-<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Delete Confirmation</h3>
-    </div>
-    <div class="modal-body">
-        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
-    </div>
-</div>
 
-
-                    
-                    <footer>
-                        <hr>
-
-                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-
-                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-                    </footer>
-                    
-            </div>
-        </div>
-    </div>
     
 
 

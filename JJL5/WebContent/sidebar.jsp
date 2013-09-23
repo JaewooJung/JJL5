@@ -51,7 +51,14 @@
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
     <div class="sidebar-nav">
        <center>
-        <img src="${rootPath}/images/111.jpeg" >
+        <c:choose>
+	<c:when test="${member.photos != null}">
+		<img src="${rootPath}/file/${member.photos[0]}" height="150" width = "120">
+	</c:when>
+	<c:otherwise>
+		<img src="${rootPath}/images/111.jpeg" height="150" width = "120">
+	</c:otherwise>
+</c:choose>
         </center>
         <table class="table">
               <thead>

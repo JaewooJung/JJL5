@@ -5,10 +5,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import net.bitacademy.java41.annotations.Component;
 import net.bitacademy.java41.controls.PageControl;
 import net.bitacademy.java41.services.TaskService;
 import net.bitacademy.java41.vo.Task;
-
+@Component("/task/taskupdate.do")
 public class TaskUpdateControl implements PageControl{
 	TaskService taskService;
 	

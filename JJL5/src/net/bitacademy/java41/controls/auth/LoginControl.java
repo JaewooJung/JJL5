@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.bitacademy.java41.annotations.Component;
 import net.bitacademy.java41.controls.PageControl;
 import net.bitacademy.java41.dao.MemberDao;
 import net.bitacademy.java41.services.AuthService;
 import net.bitacademy.java41.vo.Member;
 
+@Component("/auth/login.do")
 public class LoginControl implements PageControl{
 
 	AuthService authService;

@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import net.bitacademy.java41.annotations.Component;
+
+@Component
 public class DBConnectionPool {
 	String dburl;
 	String id;

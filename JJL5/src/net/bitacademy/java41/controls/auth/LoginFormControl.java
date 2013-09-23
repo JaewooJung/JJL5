@@ -5,8 +5,9 @@ import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.Cookie;
 
+import net.bitacademy.java41.annotations.Component;
 import net.bitacademy.java41.controls.PageControl;
-
+@Component("/auth/loginForm.do")
 public class LoginFormControl implements PageControl{
 
 	@Override
